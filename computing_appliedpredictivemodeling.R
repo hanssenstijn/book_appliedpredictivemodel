@@ -18,3 +18,14 @@ segData <- segData[, -(1:3)]
 statusColNum <- grep("Status", names(segData))
 statusColNum
 segData <- segData[, -statusColNum]
+
+# Make transformations
+# using function skweness from e1071 package
+library(e1071)
+# skweness example
+skewness(segData$AngleCh1)
+# apply skweness on all columns
+skewValues <- apply(segData, 2, skewness)
+head(skewValues)
+
+
