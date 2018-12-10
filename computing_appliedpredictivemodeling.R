@@ -28,4 +28,16 @@ skewness(segData$AngleCh1)
 skewValues <- apply(segData, 2, skewness)
 head(skewValues)
 
+# example trans <- preProcess(segData,method = c("BoxCox", "center", "scale", "pca"))
 
+# Filtering
+# indicated which columns should be removed
+nearZeroVar(segData)
+
+correlations <- cor(segData)
+dim(correlations)
+correlations[1:4, 1:4]
+
+# visualize
+library(corrplot)
+corrplot(correlations, order = "hclust")
